@@ -12,9 +12,13 @@ ARG WPA_SUPPLICANT_VERSION=2.11
 RUN apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     --no-install-recommends ca-certificates bind9-utils curl freeradius-common freeradius-utils git \
-    build-essential pkg-config libssl-dev libnl-3-dev libnl-genl-3-dev && \
+    build-essential pkg-config libssl-dev libnl-3-dev amazon-ssm-agent libnl-genl-3-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
+
+# Start SSM agent
+RUN systemctl enable amazon-ssm-agent && \
+    systemctl start amazon-ssm-agent
 
 # Install eapol_test
 RUN git clone --depth 1 --single-branch --branch v3.2.x https://github.com/FreeRADIUS/freeradius-server.git && \
@@ -35,5 +39,4 @@ RUN curl -O https://networkradius.com/assets/packages/radperf/radperf_2.0.1_amd6
 COPY ./accounts-10.csv ./accounts-100.csv ./accounts-1000.csv /accounts/
 
 # Launching a shell for interactive work
-CMD ["/bin/bash"]
-
+CMD ["/lib/systemd/systemd-entrypoint", "/bin/bash"]
