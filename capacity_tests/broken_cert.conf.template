@@ -1,0 +1,11 @@
+network={
+    ssid="GovWifi"
+    key_mgmt=WPA-EAP
+    eap=TLS
+    identity="${GW_USERNAME}"
+
+    ca_cert="/etc/freeradius/3.0/certs/broken_cert.pem"
+    client_cert="/capacity_tests/pub.pem"
+    private_key="/capacity_tests/client.key"
+
+}
