@@ -1,0 +1,15 @@
+#
+#   eapol_test -c peap-mschapv2.conf -s testing123
+#
+network={
+	ssid="GovWifi"
+	key_mgmt=WPA-EAP
+	eap=PEAP
+	identity="${GW_USERNAME}"
+	anonymous_identity="anonymous"
+	password="incorrectpassword"
+	phase2="autheap=MSCHAPV2"
+#
+#  Uncomment the following to perform server certificate validation.
+# ca_cert="/etc/raddb/certs/ca.der"
+}
