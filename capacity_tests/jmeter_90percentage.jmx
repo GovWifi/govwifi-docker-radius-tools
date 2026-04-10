@@ -8,9 +8,9 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">2000</intProp>
-        <intProp name="ThreadGroup.ramp_time">30</intProp>
-	<longProp name="ThreadGroup.duration">300</longProp>
+        <intProp name="ThreadGroup.num_threads">500</intProp>
+        <intProp name="ThreadGroup.ramp_time">20</intProp>
+	<longProp name="ThreadGroup.duration">150</longProp>
 	<boolProp name="ThreadGroup.scheduler">true</boolProp>
 	<elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
     	  <stringProp name="LoopController.loops">-1</stringProp> <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -18,7 +18,7 @@
       </ThreadGroup>
       <hashTree>
         
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="40% PEAP">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="90% PEAP">
           <intProp name="ThroughputController.style">1</intProp>
           <stringProp name="ThroughputController.percentThroughput">90.0</stringProp>
         </ThroughputController>
@@ -32,7 +32,7 @@
           <hashTree/>
         </hashTree>
 
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="40% TLS">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="10% TLS">
           <intProp name="ThroughputController.style">1</intProp>
           <stringProp name="ThroughputController.percentThroughput">10.0</stringProp>
         </ThroughputController>
