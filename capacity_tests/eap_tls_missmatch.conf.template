@@ -5,7 +5,7 @@ network={
     identity="${GW_USERNAME}"
 
     ca_cert="/etc/freeradius/3.0/certs/govwifi_ca.pem"
-    client_cert="/capacity_tests/pub.pem"
+    client_cert="/etc/freeradius/3.0/certs/broken_cert.pem"
     private_key="/capacity_tests/client.key"
 
 }

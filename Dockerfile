@@ -30,17 +30,6 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     ln -s /usr/share/freeradius/* /usr/share
 
-# Install radperf
-# RUN curl -O https://networkradius.com/assets/packages/radperf/radperf_2.0.1_amd64.deb && \
-#     dpkg -i radperf_2.0.1_amd64.deb && \
-#     rm -f radperf_2.0.1_amd64.deb && \
-#     apt-get update && \
-#     apt-get install -y unzip && \
-#     apt-get install -y less && \
-#     apt-get autoremove -y && \
-#     ln -s /usr/sbin/radperf /usr/bin/radperf && \
-#     ln -s /usr/share/freeradius/* /usr/share
-
 # Install capacity testing tools
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
@@ -74,6 +63,8 @@ CMD aws ssm get-parameter --name "/govwifi/capacity_testing/cert_pub" --with-dec
     aws ssm get-parameter --name "/govwifi/capacity_testing/cert_key" --with-decryption --region eu-west-2 --query 'Parameter.Value' --output text > /capacity_tests/client.key && \
     aws ssm get-parameter --name "/govwifi/capacity_testing/govwifi_cert" --with-decryption --region eu-west-2 --query 'Parameter.Value' --output text > /etc/freeradius/3.0/certs/govwifi_ca.pem && \
     envsubst < /capacity_tests/eap_peap.conf.template > /capacity_tests/eap_peap.conf && \
+    envsubst < /capacity_tests/broken_cert_tls.conf.template > /capacity_tests/broken_cert_tls.conf && \
+    envsubst < /capacity_tests/broken_eap_peap.conf.template > /capacity_tests/broken_eap_peap.conf && \
     envsubst < /capacity_tests/eap_tls.conf.template > /capacity_tests/eap_tls.conf && \
     envsubst < /capacity_tests/eap_peap_missmatch.conf.template > /capacity_tests/eap_peap_missmatch.conf && \
     envsubst < /capacity_tests/eap_tls_missmatch.conf.template > /capacity_tests/eap_tls_missmatch.conf && \
