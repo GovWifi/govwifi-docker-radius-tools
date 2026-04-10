@@ -8,23 +8,23 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">20000</intProp>
-        <intProp name="ThreadGroup.ramp_time">30</intProp>
-	<longProp name="ThreadGroup.duration">300</longProp>
-	<boolProp name="ThreadGroup.scheduler">true</boolProp>
-	<elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
-    	  <stringProp name="LoopController.loops">-1</stringProp> <boolProp name="LoopController.continue_forever">false</boolProp>
-	</elementProp>
+        <intProp name="ThreadGroup.num_threads">820</intProp>
+        <intProp name="ThreadGroup.ramp_time">20</intProp>
+        <longProp name="ThreadGroup.duration">150</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
+          <stringProp name="LoopController.loops">-1</stringProp> <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
       </ThreadGroup>
       <hashTree>
-        
+
         <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="100% PEAP">
           <intProp name="ThroughputController.style">1</intProp>
           <stringProp name="ThroughputController.percentThroughput">100.0</stringProp>
         </ThroughputController>
         <hashTree>
           <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="PEAP Success">
-            <stringProp name="SystemSampler.command">./run_tls_broken.sh</stringProp>
+            <stringProp name="SystemSampler.command">./run_eap_peap_broken.sh</stringProp>
             <stringProp name="SystemSampler.directory">/capacity_tests/scripts</stringProp>
             <elementProp name="SystemSampler.arguments" elementType="Arguments"><collectionProp name="Arguments.arguments"/></elementProp>
             <elementProp name="SystemSampler.environment" elementType="Arguments"><collectionProp name="Arguments.arguments"/></elementProp>
